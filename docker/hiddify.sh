@@ -32,9 +32,9 @@
 
 
 if [ -f "/hiddify/data/hiddify.json" ]; then
-    /hiddify/HiddifyCli run --config "$CONFIG" -h /hiddify/data/hiddify.json
+    /hiddify/VpnroCli run --config "$CONFIG" -h /hiddify/data/hiddify.json
 else
-    /hiddify/HiddifyCli run --config "$CONFIG"
+    /hiddify/VpnroCli run --config "$CONFIG"
 fi
 
 

@@ -48,8 +48,8 @@ endef
 define Package/vpnro-core/install
 
 	$(INSTALL_DIR) $(1)/usr/bin/
-	$(INSTALL_BIN) $(GO_PKG_BUILD_BIN_DIR)/HiddifyCli $(1)/usr/bin/hiddify-cli
-	$(INSTALL_BIN) $(GO_PKG_BUILD_BIN_DIR)/HiddifyCli $(1)/usr/bin/HiddifyCli
+	$(INSTALL_BIN) $(GO_PKG_BUILD_BIN_DIR)/VpnroCli $(1)/usr/bin/vpnrot-cli
+	$(INSTALL_BIN) $(GO_PKG_BUILD_BIN_DIR)/VpnroCli $(1)/usr/bin/VpnroCli
 
 	$(INSTALL_DIR) $(1)/etc/vpnro-core
 	$(INSTALL_DATA) $(PKG_BUILD_DIR)/release/config/config.json $(1)/etc/vpnro-core

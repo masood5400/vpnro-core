@@ -77,11 +77,11 @@ func makeTunnelConfig(Ipv6 bool, ServerPort int32, StrictRoute bool, EndpointInd
 				"outbound": "direct-out"
 			},
 			{
-				"process_name":"HiddifyCli",
+				"process_name":"VpnroCli",
 				"outbound": "direct-out"
 			},
 			{
-				"process_name":"HiddifyCli.exe",
+				"process_name":"VpnroCli.exe",
 				"outbound": "direct-out"
 			}
 		  ]
