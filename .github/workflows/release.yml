@@ -236,7 +236,7 @@ jobs:
       - name: Delete Current Release Assets
         uses: 8Mi-Tech/delete-release-assets-action@main
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GHCR_PAT }}
           tag: 'draft'
           deleteOnlyFromDrafts: false
 
@@ -244,7 +244,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: ${{ success() }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GHCR_PAT }}
         with:
           files: ./bin/*.tar.gz
           name: 'draft'
@@ -271,7 +271,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: ${{ success() }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GHCR_PAT }}
         with:
           tag_name: ${{ github.ref_name }}
           files: bin/*.tar.gz
@@ -322,7 +322,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.GHCR_PAT }}
 
       # Extract metadata (tags, labels) for Docker
       # https://github.com/docker/metadata-action
