@@ -18,26 +18,26 @@ jobs:
       fail-fast: false
       matrix:
         job:
-          - { name: 'hiddify-core-android', os: 'ubuntu-latest', target: 'android' }
-          - { name: 'hiddify-core-linux-amd64', os: 'ubuntu-20.04', target: 'linux-amd64' }
-          - { name: "hiddify-core-windows-amd64", os: 'ubuntu-latest', target: 'windows-amd64', aarch: 'x64' }
-          - { name: "hiddify-core-macos-universal", os: 'macos-11', target: 'macos-universal' }
-          - { name: "hiddify-core-ios", os: "macos-11", target: "ios" }
+          - { name: 'vpnro-core-android', os: 'ubuntu-latest', target: 'android' }
+          - { name: 'vpnro-core-linux-amd64', os: 'ubuntu-20.04', target: 'linux-amd64' }
+          - { name: "vpnro-core-windows-amd64", os: 'ubuntu-latest', target: 'windows-amd64', aarch: 'x64' }
+          - { name: "vpnro-core-macos-universal", os: 'macos-11', target: 'macos-universal' }
+          - { name: "vpnro-core-ios", os: "macos-11", target: "ios" }
           # linux custom
-          - {name: hiddify-cli-linux-amd64, goos: linux, goarch: amd64, goamd64: v1, target: 'linux-custom', os: 'ubuntu-20.04'}
-          - {name: hiddify-cli-linux-amd64-v3, goos: linux, goarch: amd64, goamd64: v3, target: 'linux-custom', os: 'ubuntu-20.04'}
-          - {name: hiddify-cli-linux-386, goos: linux, goarch: 386, target: 'linux-custom', os: 'ubuntu-20.04'}
-          - {name: hiddify-cli-linux-arm64, goos: linux, goarch: arm64, target: 'linux-custom', os: 'ubuntu-20.04'}
-          - {name: hiddify-cli-linux-armv5, goos: linux, goarch: arm, goarm: 5, target: 'linux-custom', os: 'ubuntu-20.04'}
-          - {name: hiddify-cli-linux-armv6, goos: linux, goarch: arm, goarm: 6, target: 'linux-custom', os: 'ubuntu-20.04'}
-          - {name: hiddify-cli-linux-armv7, goos: linux, goarch: arm, goarm: 7, target: 'linux-custom', os: 'ubuntu-20.04'}
-          - {name: hiddify-cli-linux-mips-softfloat, goos: linux, goarch: mips, gomips: softfloat, target: 'linux-custom', os: 'ubuntu-20.04'}
-          - {name: hiddify-cli-linux-mips-hardfloat, goos: linux, goarch: mips, gomips: hardfloat, target: 'linux-custom', os: 'ubuntu-20.04'}
-          - {name: hiddify-cli-linux-mipsel-softfloat, goos: linux, goarch: mipsle, gomips: softfloat, target: 'linux-custom', os: 'ubuntu-20.04'}
-          - {name: hiddify-cli-linux-mipsel-hardfloat, goos: linux, goarch: mipsle, gomips: hardfloat, target: 'linux-custom', os: 'ubuntu-20.04'}
-          - {name: hiddify-cli-linux-mips64, goos: linux, goarch: mips64, target: 'linux-custom', os: 'ubuntu-20.04'}
-          - {name: hiddify-cli-linux-mips64el, goos: linux, goarch: mips64le, target: 'linux-custom', os: 'ubuntu-20.04'}
-          - {name: hiddify-cli-linux-s390x, goos: linux, goarch: s390x, target: 'linux-custom', os: 'ubuntu-20.04'}
+          - {name: vpnro-cli-linux-amd64, goos: linux, goarch: amd64, goamd64: v1, target: 'linux-custom', os: 'ubuntu-20.04'}
+          - {name: vpnro-cli-linux-amd64-v3, goos: linux, goarch: amd64, goamd64: v3, target: 'linux-custom', os: 'ubuntu-20.04'}
+          - {name: vpnro-cli-linux-386, goos: linux, goarch: 386, target: 'linux-custom', os: 'ubuntu-20.04'}
+          - {name: vpnro-cli-linux-arm64, goos: linux, goarch: arm64, target: 'linux-custom', os: 'ubuntu-20.04'}
+          - {name: vpnro-cli-linux-armv5, goos: linux, goarch: arm, goarm: 5, target: 'linux-custom', os: 'ubuntu-20.04'}
+          - {name: vpnro-cli-linux-armv6, goos: linux, goarch: arm, goarm: 6, target: 'linux-custom', os: 'ubuntu-20.04'}
+          - {name: vpnro-cli-linux-armv7, goos: linux, goarch: arm, goarm: 7, target: 'linux-custom', os: 'ubuntu-20.04'}
+          - {name: vpnro-cli-linux-mips-softfloat, goos: linux, goarch: mips, gomips: softfloat, target: 'linux-custom', os: 'ubuntu-20.04'}
+          - {name: vpnro-cli-linux-mips-hardfloat, goos: linux, goarch: mips, gomips: hardfloat, target: 'linux-custom', os: 'ubuntu-20.04'}
+          - {name: vpnro-cli-linux-mipsel-softfloat, goos: linux, goarch: mipsle, gomips: softfloat, target: 'linux-custom', os: 'ubuntu-20.04'}
+          - {name: vpnro-cli-linux-mipsel-hardfloat, goos: linux, goarch: mipsle, gomips: hardfloat, target: 'linux-custom', os: 'ubuntu-20.04'}
+          - {name: vpnro-cli-linux-mips64, goos: linux, goarch: mips64, target: 'linux-custom', os: 'ubuntu-20.04'}
+          - {name: vpnro-cli-linux-mips64el, goos: linux, goarch: mips64le, target: 'linux-custom', os: 'ubuntu-20.04'}
+          - {name: vpnro-cli-linux-s390x, goos: linux, goarch: s390x, target: 'linux-custom', os: 'ubuntu-20.04'}
     
     runs-on: ${{ matrix.job.os }}
     env:
@@ -93,9 +93,9 @@ jobs:
         run: |
           tree 
           rm -f /*.h */*.h
-          rm ./hiddify-libcore*sources* ||echo "no source"
-          rm ./hiddify-libcore-macos-a*.dylib || echo "no macos arm and amd"
-          files=$(ls | grep -E '^(libcore\.(dll|so|dylib|aar)|webui|Libcore.xcframework|lib|HiddifyCli(\.exe)?)$')
+          rm ./vpnro-libcore*sources* ||echo "no source"
+          rm ./vpnro-libcore-macos-a*.dylib || echo "no macos arm and amd"
+          files=$(ls | grep -E '^(libcore\.(dll|so|dylib|aar)|webui|Libcore.xcframework|lib|vpnroCli(\.exe)?)$')
           echo tar -czvf ${{ matrix.job.name }}.tar.gz  $files
           tar -czvf ${{ matrix.job.name }}.tar.gz  $files
           
@@ -117,7 +117,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           merge-multiple: true
-          pattern: hiddify-*
+          pattern: vpnro-*
           path: bin/
 
       - name: Display Files Structure
@@ -151,7 +151,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           merge-multiple: true
-          pattern: hiddify-*
+          pattern: vpnro-*
           path: bin/
 
       - name: Display Files Structure
@@ -182,7 +182,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           merge-multiple: true
-          pattern: hiddify-*
+          pattern: vpnro-*
           path: bin/
          
               
@@ -218,7 +218,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@96383f45573cb7f253c731d3b3ab81c87ef81934 # v5.0.0
         with:
-          images: ghcr.io/hiddify/hiddify-next-core
+          images: ghcr.io/vpnro/vpnro-core
 
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
