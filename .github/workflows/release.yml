@@ -18,27 +18,137 @@ jobs:
       fail-fast: false
       matrix:
         job:
-          - { name: 'vpnro-core-android', os: 'ubuntu-latest', target: 'android' }
-          - { name: 'vpnro-core-linux-amd64', os: 'ubuntu-20.04', target: 'linux-amd64' }
-          - { name: "vpnro-core-windows-amd64", os: 'ubuntu-latest', target: 'windows-amd64', aarch: 'x64' }
-          - { name: "vpnro-core-macos-universal", os: 'macos-11', target: 'macos-universal' }
-          - { name: "vpnro-core-ios", os: "macos-11", target: "ios" }
+          - {
+              name: 'vpnro-core-android',
+              os: 'ubuntu-latest',
+              target: 'android',
+            }
+          - {
+              name: 'vpnro-core-linux-amd64',
+              os: 'ubuntu-20.04',
+              target: 'linux-amd64',
+            }
+          - {
+              name: 'vpnro-core-windows-amd64',
+              os: 'ubuntu-latest',
+              target: 'windows-amd64',
+              aarch: 'x64',
+            }
+          - {
+              name: 'vpnro-core-macos-universal',
+              os: 'macos-11',
+              target: 'macos-universal',
+            }
+          - { name: 'vpnro-core-ios', os: 'macos-11', target: 'ios' }
           # linux custom
-          - {name: vpnro-cli-linux-amd64, goos: linux, goarch: amd64, goamd64: v1, target: 'linux-custom', os: 'ubuntu-20.04'}
-          - {name: vpnro-cli-linux-amd64-v3, goos: linux, goarch: amd64, goamd64: v3, target: 'linux-custom', os: 'ubuntu-20.04'}
-          - {name: vpnro-cli-linux-386, goos: linux, goarch: 386, target: 'linux-custom', os: 'ubuntu-20.04'}
-          - {name: vpnro-cli-linux-arm64, goos: linux, goarch: arm64, target: 'linux-custom', os: 'ubuntu-20.04'}
-          - {name: vpnro-cli-linux-armv5, goos: linux, goarch: arm, goarm: 5, target: 'linux-custom', os: 'ubuntu-20.04'}
-          - {name: vpnro-cli-linux-armv6, goos: linux, goarch: arm, goarm: 6, target: 'linux-custom', os: 'ubuntu-20.04'}
-          - {name: vpnro-cli-linux-armv7, goos: linux, goarch: arm, goarm: 7, target: 'linux-custom', os: 'ubuntu-20.04'}
-          - {name: vpnro-cli-linux-mips-softfloat, goos: linux, goarch: mips, gomips: softfloat, target: 'linux-custom', os: 'ubuntu-20.04'}
-          - {name: vpnro-cli-linux-mips-hardfloat, goos: linux, goarch: mips, gomips: hardfloat, target: 'linux-custom', os: 'ubuntu-20.04'}
-          - {name: vpnro-cli-linux-mipsel-softfloat, goos: linux, goarch: mipsle, gomips: softfloat, target: 'linux-custom', os: 'ubuntu-20.04'}
-          - {name: vpnro-cli-linux-mipsel-hardfloat, goos: linux, goarch: mipsle, gomips: hardfloat, target: 'linux-custom', os: 'ubuntu-20.04'}
-          - {name: vpnro-cli-linux-mips64, goos: linux, goarch: mips64, target: 'linux-custom', os: 'ubuntu-20.04'}
-          - {name: vpnro-cli-linux-mips64el, goos: linux, goarch: mips64le, target: 'linux-custom', os: 'ubuntu-20.04'}
-          - {name: vpnro-cli-linux-s390x, goos: linux, goarch: s390x, target: 'linux-custom', os: 'ubuntu-20.04'}
-    
+          - {
+              name: vpnro-cli-linux-amd64,
+              goos: linux,
+              goarch: amd64,
+              goamd64: v1,
+              target: 'linux-custom',
+              os: 'ubuntu-20.04',
+            }
+          - {
+              name: vpnro-cli-linux-amd64-v3,
+              goos: linux,
+              goarch: amd64,
+              goamd64: v3,
+              target: 'linux-custom',
+              os: 'ubuntu-20.04',
+            }
+          - {
+              name: vpnro-cli-linux-386,
+              goos: linux,
+              goarch: 386,
+              target: 'linux-custom',
+              os: 'ubuntu-20.04',
+            }
+          - {
+              name: vpnro-cli-linux-arm64,
+              goos: linux,
+              goarch: arm64,
+              target: 'linux-custom',
+              os: 'ubuntu-20.04',
+            }
+          - {
+              name: vpnro-cli-linux-armv5,
+              goos: linux,
+              goarch: arm,
+              goarm: 5,
+              target: 'linux-custom',
+              os: 'ubuntu-20.04',
+            }
+          - {
+              name: vpnro-cli-linux-armv6,
+              goos: linux,
+              goarch: arm,
+              goarm: 6,
+              target: 'linux-custom',
+              os: 'ubuntu-20.04',
+            }
+          - {
+              name: vpnro-cli-linux-armv7,
+              goos: linux,
+              goarch: arm,
+              goarm: 7,
+              target: 'linux-custom',
+              os: 'ubuntu-20.04',
+            }
+          - {
+              name: vpnro-cli-linux-mips-softfloat,
+              goos: linux,
+              goarch: mips,
+              gomips: softfloat,
+              target: 'linux-custom',
+              os: 'ubuntu-20.04',
+            }
+          - {
+              name: vpnro-cli-linux-mips-hardfloat,
+              goos: linux,
+              goarch: mips,
+              gomips: hardfloat,
+              target: 'linux-custom',
+              os: 'ubuntu-20.04',
+            }
+          - {
+              name: vpnro-cli-linux-mipsel-softfloat,
+              goos: linux,
+              goarch: mipsle,
+              gomips: softfloat,
+              target: 'linux-custom',
+              os: 'ubuntu-20.04',
+            }
+          - {
+              name: vpnro-cli-linux-mipsel-hardfloat,
+              goos: linux,
+              goarch: mipsle,
+              gomips: hardfloat,
+              target: 'linux-custom',
+              os: 'ubuntu-20.04',
+            }
+          - {
+              name: vpnro-cli-linux-mips64,
+              goos: linux,
+              goarch: mips64,
+              target: 'linux-custom',
+              os: 'ubuntu-20.04',
+            }
+          - {
+              name: vpnro-cli-linux-mips64el,
+              goos: linux,
+              goarch: mips64le,
+              target: 'linux-custom',
+              os: 'ubuntu-20.04',
+            }
+          - {
+              name: vpnro-cli-linux-s390x,
+              goos: linux,
+              goarch: s390x,
+              target: 'linux-custom',
+              os: 'ubuntu-20.04',
+            }
+
     runs-on: ${{ matrix.job.os }}
     env:
       GOOS: ${{ matrix.job.goos }}
@@ -98,7 +208,7 @@ jobs:
           files=$(ls | grep -E '^(libcore\.(dll|so|dylib|aar)|webui|Libcore.xcframework|lib|vpnroCli(\.exe)?)$')
           echo tar -czvf ${{ matrix.job.name }}.tar.gz  $files
           tar -czvf ${{ matrix.job.name }}.tar.gz  $files
-          
+
         working-directory: bin
       - uses: actions/upload-artifact@v4
         if: ${{ success() }}
@@ -106,7 +216,6 @@ jobs:
           name: ${{ matrix.job.name }}
           path: bin/*.tar.gz
           retention-days: 1
-
 
   upload-prerelease:
     permissions: write-all
@@ -168,31 +277,34 @@ jobs:
           files: bin/*.tar.gz
 
   make-upload-docker:
-    permissions: write-all
-    if: ${{ github.ref_type=='tag' }}
-    needs: [upload-release]
-    runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
+      id-token: write
+    # permissions: write-all
+    if: ${{ github.ref_type=='tag' }}
+    needs: [upload-release]
+    runs-on: ubuntu-latest
+    # permissions:
+    #   contents: read
+    #   packages: write
     #   # This is used to complete the identity challenge
     #   # with sigstore/fulcio when running outside of PRs.
-      id-token: write
+    #   id-token: write
     steps:
       - uses: actions/download-artifact@v4
         with:
           merge-multiple: true
           pattern: vpnro-*
           path: bin/
-         
-              
+
       - name: Checkout repository
         uses: actions/checkout@v3
 
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
       - name: Install cosign
-        
+
         uses: sigstore/cosign-installer@6e04d228eb30da1757ee4e1dd75a0ec73a653e06 #v3.1.1
         with:
           cosign-release: 'v2.1.1'
@@ -246,4 +358,3 @@ jobs:
         # This step uses the identity token to provision an ephemeral certificate
         # against the sigstore community Fulcio instance.
         run: echo "${TAGS}" | xargs -I {} cosign sign --yes {}@${DIGEST}
-          
