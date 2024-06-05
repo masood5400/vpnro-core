@@ -10,10 +10,10 @@ import (
 	"os"
 	"unsafe"
 
-	"github.com/hiddify/hiddify-core/bridge"
-	"github.com/hiddify/hiddify-core/config"
-	pb "github.com/hiddify/hiddify-core/hiddifyrpc"
-	v2 "github.com/hiddify/hiddify-core/v2"
+	"github.com/masood5400/vpnro-core/bridge"
+	"github.com/masood5400/vpnro-core/config"
+	pb "github.com/masood5400/vpnro-core/hiddifyrpc"
+	v2 "github.com/masood5400/vpnro-core/v2"
 
 	"github.com/sagernet/sing-box/log"
 )

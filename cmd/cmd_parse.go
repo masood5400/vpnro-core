@@ -5,7 +5,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/hiddify/hiddify-core/config"
+	"github.com/masood5400/vpnro-core/config"
 	"github.com/sagernet/sing-box/log"
 	"github.com/spf13/cobra"
 )

@@ -8,9 +8,9 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/hiddify/hiddify-core/bridge"
-	"github.com/hiddify/hiddify-core/config"
-	pb "github.com/hiddify/hiddify-core/hiddifyrpc"
+	"github.com/masood5400/vpnro-core/bridge"
+	"github.com/masood5400/vpnro-core/config"
+	pb "github.com/masood5400/vpnro-core/hiddifyrpc"
 	"github.com/sagernet/sing-box/experimental/libbox"
 	"github.com/sagernet/sing-box/log"
 )

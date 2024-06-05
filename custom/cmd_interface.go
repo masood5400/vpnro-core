@@ -7,7 +7,7 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/hiddify/hiddify-core/cmd"
+	"github.com/masood5400/vpnro-core/cmd"
 )
 
 //export parseCli

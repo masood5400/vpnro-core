@@ -1,4 +1,4 @@
-module github.com/hiddify/hiddify-core
+module github.com/masood5400/vpnro-core
 
 go 1.22.0
 

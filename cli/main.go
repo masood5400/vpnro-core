@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"github.com/hiddify/hiddify-core/cmd"
+	"github.com/masood5400/vpnro-core/cmd"
 )
 
 func main() {

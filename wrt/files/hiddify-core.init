@@ -3,8 +3,8 @@
 USE_PROCD=1
 START=99
 
-NAME="hiddify-core"
-PROG="/usr/bin/hiddify-core"
+NAME="vpnro-core"
+PROG="/usr/bin/vpnro-core"
 
 start_service() {
 	config_load "$NAME"
@@ -15,7 +15,7 @@ start_service() {
 
 	config_get user "main" "user" "root"
 	config_get conffile "main" "conffile"
-	config_get workdir "main" "workdir" "/usr/share/hiddify-core"
+	config_get workdir "main" "workdir" "/usr/share/vpnro-core"
 
 	mkdir -p "$workdir"
 	local group="$(id -ng $user)"

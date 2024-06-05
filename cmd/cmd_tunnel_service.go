@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/hiddify/hiddify-core/config"
-	v2 "github.com/hiddify/hiddify-core/v2"
+	"github.com/masood5400/vpnro-core/config"
+	v2 "github.com/masood5400/vpnro-core/v2"
 
 	"github.com/spf13/cobra"
 )

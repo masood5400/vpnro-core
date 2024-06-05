@@ -5,7 +5,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	v2 "github.com/hiddify/hiddify-core/v2"
+	v2 "github.com/masood5400/vpnro-core/v2"
 )
 
 func main() {

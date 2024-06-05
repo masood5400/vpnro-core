@@ -8,7 +8,7 @@ import (
 	"log"
 	"net"
 
-	pb "github.com/hiddify/hiddify-core/hiddifyrpc"
+	pb "github.com/masood5400/vpnro-core/hiddifyrpc"
 	"google.golang.org/grpc"
 )
 
