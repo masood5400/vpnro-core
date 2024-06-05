@@ -48,7 +48,7 @@ endef
 define Package/vpnro-core/install
 
 	$(INSTALL_DIR) $(1)/usr/bin/
-	$(INSTALL_BIN) $(GO_PKG_BUILD_BIN_DIR)/VpnroCli $(1)/usr/bin/vpnrot-cli
+	$(INSTALL_BIN) $(GO_PKG_BUILD_BIN_DIR)/VpnroCli $(1)/usr/bin/vpnro-cli
 	$(INSTALL_BIN) $(GO_PKG_BUILD_BIN_DIR)/VpnroCli $(1)/usr/bin/VpnroCli
 
 	$(INSTALL_DIR) $(1)/etc/vpnro-core
