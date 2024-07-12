@@ -66,7 +66,7 @@ func wireGuardToSingbox(wgConfig WarpWireguardConfig, server string, port uint16
 
 func getRandomIP() string {
 
-	ipPort, err := warp.RandomWarpEndpoint(true, true)
+	ipPort, err := warp.RandomWarpEndpoint(false, true)
 	if err == nil {
 		return ipPort.Addr().String()
 	}
