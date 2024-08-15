@@ -55,10 +55,11 @@ func Start(in *pb.StartRequest) (*pb.CoreInfoResponse, error) {
 	Log(pb.LogLevel_INFO, pb.LogType_CORE, "Starting")
 	if CoreState != pb.CoreState_STOPPED {
 		Log(pb.LogLevel_INFO, pb.LogType_CORE, "Starting0000")
-		return &pb.CoreInfoResponse{
-			CoreState:   CoreState,
-			MessageType: pb.MessageType_INSTANCE_NOT_STOPPED,
-		}, fmt.Errorf("instance not stopped")
+		Stop()
+		// return &pb.CoreInfoResponse{
+		// 	CoreState:   CoreState,
+		// 	MessageType: pb.MessageType_INSTANCE_NOT_STOPPED,
+		// }, fmt.Errorf("instance not stopped")
 	}
 	Log(pb.LogLevel_DEBUG, pb.LogType_CORE, "Starting Core")
 	SetCoreStatus(pb.CoreState_STARTING, pb.MessageType_EMPTY, "")
@@ -86,7 +87,7 @@ func StartService(in *pb.StartRequest) (*pb.CoreInfoResponse, error) {
 	}
 	Log(pb.LogLevel_DEBUG, pb.LogType_CORE, "Parsing Config")
 
-	parsedContent, err := parseConfig(content)
+	parsedContent, err := readOptions(content)
 	Log(pb.LogLevel_DEBUG, pb.LogType_CORE, "Parsed")
 
 	if err != nil {
@@ -174,7 +175,7 @@ func Parse(in *pb.ParseRequest) (*pb.ParseResponse, error) {
 
 	}
 
-	config, err := config.ParseConfigContent(content, true, nil, false)
+	config, err := config.ParseConfigContent(content, true, configOptions, false)
 	if err != nil {
 		return &pb.ParseResponse{
 			ResponseCode: pb.ResponseCode_FAILED,
@@ -229,7 +230,9 @@ func GenerateConfig(in *pb.GenerateConfigRequest) (*pb.GenerateConfigResponse, e
 		Log(pb.LogLevel_FATAL, pb.LogType_CONFIG, err.Error())
 		StopAndAlert(pb.MessageType_UNEXPECTED_ERROR, err.Error())
 	})
-
+	if configOptions == nil {
+		configOptions = config.DefaultConfigOptions()
+	}
 	config, err := generateConfigFromFile(in.Path, *configOptions)
 	if err != nil {
 		return nil, err
@@ -244,7 +247,7 @@ func generateConfigFromFile(path string, configOpt config.ConfigOptions) (string
 	if err != nil {
 		return "", err
 	}
-	options, err := parseConfig(string(content))
+	options, err := readOptions(string(content))
 	if err != nil {
 		return "", err
 	}

@@ -6,13 +6,14 @@ import (
 )
 
 type ConfigOptions struct {
-	EnableFullConfig bool   `json:"enable-full-config"`
-	LogLevel         string `json:"log-level"`
-	EnableClashApi   bool   `json:"enable-clash-api"`
-	ClashApiPort     uint16 `json:"clash-api-port"`
-	ClashApiSecret   string `json:"web-secret"`
-	Region           string `json:"region"`
-	BlockAds         bool   `json:"block-ads"`
+	EnableFullConfig        bool   `json:"enable-full-config"`
+	LogLevel                string `json:"log-level"`
+	EnableClashApi          bool   `json:"enable-clash-api"`
+	ClashApiPort            uint16 `json:"clash-api-port"`
+	ClashApiSecret          string `json:"web-secret"`
+	Region                  string `json:"region"`
+	BlockAds                bool   `json:"block-ads"`
+	UseXrayCoreWhenPossible bool   `json:"use-xray-core-when-possible"`
 	// GeoIPPath        string      `json:"geoip-path"`
 	// GeoSitePath      string      `json:"geosite-path"`
 	Rules     []Rule      `json:"rules"`
@@ -83,8 +84,9 @@ type WarpOptions struct {
 	WireguardConfigStr string              `json:"wireguard-config"`
 	WireguardConfig    WarpWireguardConfig `json:"wireguardConfig"` // TODO check
 	FakePackets        string              `json:"noise"`
-	FakePacketSize     string              `json:"fake-packet-size"`
+	FakePacketSize     string              `json:"noise-size"`
 	FakePacketDelay    string              `json:"noise-delay"`
+	FakePacketMode     string              `json:"noise-mode"`
 	CleanIP            string              `json:"clean-ip"`
 	CleanPort          uint16              `json:"clean-port"`
 	Account            WarpAccount
@@ -123,6 +125,7 @@ func DefaultConfigOptions() *ConfigOptions {
 			AllowConnectionFromLAN: false,
 		},
 		LogLevel:       "warn",
+		Region:         "other",
 		EnableClashApi: true,
 		ClashApiPort:   6756,
 		ClashApiSecret: "",
@@ -143,5 +146,6 @@ func DefaultConfigOptions() *ConfigOptions {
 			EnablePadding:  false,
 			PaddingSize:    "1200-1500",
 		},
+		UseXrayCoreWhenPossible: false,
 	}
 }

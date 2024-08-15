@@ -11,13 +11,13 @@ import (
 
 func (s *TunnelService) Start(ctx context.Context, in *pb.TunnelStartRequest) (*pb.TunnelResponse, error) {
 	if in.ServerPort == 0 {
-		in.ServerPort = 2334
+		in.ServerPort = 12334
 	}
 	useFlutterBridge = false
 	res, err := Start(&pb.StartRequest{
 		ConfigContent:          makeTunnelConfig(in.Ipv6, in.ServerPort, in.StrictRoute, in.EndpointIndependentNat, in.Stack),
 		EnableOldCommandServer: false,
-		DisableMemoryLimit:     false,
+		DisableMemoryLimit:     true,
 		EnableRawConfig:        true,
 	})
 	fmt.Printf("Start Result: %+v\n", res)
@@ -39,6 +39,9 @@ func makeTunnelConfig(Ipv6 bool, ServerPort int32, StrictRoute bool, EndpointInd
 		ipv6 = ""
 	}
 	base := `{
+		"log":{
+			"level": "warn"
+		},
 		"inbounds": [
 		  {
 			"type": "tun",
@@ -46,7 +49,6 @@ func makeTunnelConfig(Ipv6 bool, ServerPort int32, StrictRoute bool, EndpointInd
 			"interface_name": "HiddifyTunnel",
 			"inet4_address": "172.19.0.1/30",
 			` + ipv6 + `
-			"mtu": 9000,
 			"auto_route": true,
 			"strict_route": ` + fmt.Sprintf("%t", StrictRoute) + `,
 			"endpoint_independent_nat": ` + fmt.Sprintf("%t", EndpointIndependentNat) + `,
@@ -69,19 +71,12 @@ func makeTunnelConfig(Ipv6 bool, ServerPort int32, StrictRoute bool, EndpointInd
 		"route": {
 		  "rules": [
 			{
-				"process_name":"Hiddify.exe",
-				"outbound": "direct-out"
-			},
-			{
-				"process_name":"Hiddify",
-				"outbound": "direct-out"
-			},
-			{
-				"process_name":"HiddifyCli",
-				"outbound": "direct-out"
-			},
-			{
-				"process_name":"HiddifyCli.exe",
+				"process_name":[
+					"Hiddify.exe",
+					"Hiddify",
+					"HiddifyCli",
+					"HiddifyCli.exe"
+					],
 				"outbound": "direct-out"
 			}
 		  ]

@@ -32,6 +32,9 @@ func ParseConfig(path string, debug bool) ([]byte, error) {
 	return ParseConfigContent(string(content), debug, nil, false)
 }
 func ParseConfigContent(contentstr string, debug bool, configOpt *ConfigOptions, fullConfig bool) ([]byte, error) {
+	if configOpt == nil {
+		configOpt = DefaultConfigOptions()
+	}
 	content := []byte(contentstr)
 	var jsonObj map[string]interface{} = make(map[string]interface{})
 
@@ -57,10 +60,11 @@ func ParseConfigContent(contentstr string, debug bool, configOpt *ConfigOptions,
 		}
 
 		newContent, _ := json.MarshalIndent(jsonObj, "", "  ")
+
 		return patchConfig(newContent, "SingboxParser", configOpt)
 	}
 
-	v2rayStr, err := ray2sing.Ray2Singbox(string(content))
+	v2rayStr, err := ray2sing.Ray2Singbox(string(content), configOpt.UseXrayCoreWhenPossible)
 	if err == nil {
 		return patchConfig([]byte(v2rayStr), "V2rayParser", configOpt)
 	}
@@ -95,7 +99,7 @@ func patchConfig(content []byte, name string, configOpt *ConfigOptions) ([]byte,
 	for _, base := range options.Outbounds {
 		out := base
 		b.Go(base.Tag, func() (*option.Outbound, error) {
-			err := patchWarp(&out, configOpt, false)
+			err := patchWarp(&out, configOpt, false, nil)
 			if err != nil {
 				return nil, fmt.Errorf("[Warp] patch warp error: %w", err)
 			}
@@ -113,6 +117,7 @@ func patchConfig(content []byte, name string, configOpt *ConfigOptions) ([]byte,
 	}
 
 	content, _ = json.MarshalIndent(options, "", "  ")
+
 	fmt.Printf("%s\n", content)
 	return validateResult(content, name)
 }
